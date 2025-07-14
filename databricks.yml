@@ -54,6 +54,10 @@ resources:
                 num_workers: 1
                 azure_attributes:
                   availability: "ON_DEMAND_AZURE"
-          queue:
-            enabled: true
-          performance_target: STANDARD
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            client: "2"
+      performance_target: STANDARD
