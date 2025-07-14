@@ -23,6 +23,7 @@ bundle:
 targets:
   dev:
     default: true
+    mode: production
     host: https://adb-3474497264589105.5.azuredatabricks.net/         # Dev workspace host
     root_path: /Workspace/demo2/        # Dev root path
     file_path: /Workspace/demo2/         # Dev file path
