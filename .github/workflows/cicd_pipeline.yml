@@ -34,4 +34,4 @@ jobs:
 
       # Step 5: Run smoke test notebook
       - name: Run smoke test
-        run: databricks bundle run smoke-test --target dev
+        run: databricks bundle run smoke_test --target dev
