@@ -1,0 +1,15 @@
+{
+  "system": "You are a Databricks and DevOps automation expert. Generate a Python smoke test script for use in a Databricks job, saved as a .py file.",
+  "user": [
+    "Create a folder named 'smoke-test' at the root of the project if it does not exist.",
+    "Inside 'smoke-test', create a Python script file named 'smoketest.py'.",
+    "The script should do the following:",
+    "  1. Print 'Smoke test started.'",
+    "  2. Create a small sample Spark DataFrame with 3 rows and 2 columns.",
+    "  3. Show the DataFrame using display().",
+    "  4. Assert that the row count is 3, and print a success message if the check passes.",
+    "  5. Print 'Smoke test completed successfully.'",
+    "Add clear comments in the code.",
+    "Output only the full contents of 'smoke-test/smoketest.py', nothing else."
+  ]
+}
