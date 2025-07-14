@@ -23,17 +23,17 @@ bundle:
 targets:
   dev:
     default: true
-    host: ${var.DATABRICKS_HOST_DEV}         # Dev workspace host
-    root_path: ${var.ROOT_PATH_DEV}          # Dev root path
-    file_path: ${var.FILE_PATH_DEV}          # Dev file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/         # Dev workspace host
+    root_path: /Workspace/demo2/        # Dev root path
+    file_path: /Workspace/demo2/         # Dev file path
   qa:
-    host: ${var.DATABRICKS_HOST_QA}          # QA workspace host
-    root_path: ${var.ROOT_PATH_QA}           # QA root path
-    file_path: ${var.FILE_PATH_QA}           # QA file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/          # QA workspace host
+    root_path: /Workspace/demo2/             # QA root path
+    file_path: /Workspace/demo2/            # QA file path
   prod:
-    host: ${var.DATABRICKS_HOST_PROD}        # Prod workspace host
-    root_path: ${var.ROOT_PATH_PROD}         # Prod root path
-    file_path: ${var.FILE_PATH_PROD}         # Prod file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/       # Prod workspace host
+    root_path: /Workspace/demo2/           # Prod root path
+    file_path: /Workspace/demo2/           # Prod file path
 
 resources:
   jobs:
@@ -42,7 +42,7 @@ resources:
       tasks:
         - task_key: smoke-test-task
           spark_python_task:
-            python_file: ${var.SMOKE_TEST_PYTHON_FILE}  # Path to the smoke test script
+            python_file: /Workspace/demo2/smoketest/smoke_test.py  # Path to the smoke test script
           job_clusters:
             - job_cluster_key: smoke-test-cluster
               new_cluster:
