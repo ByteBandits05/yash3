@@ -36,25 +36,25 @@ targets:
     root_path: /Workspace/demo2/           # Prod root path
     file_path: /Workspace/demo2/           # Prod file path
 
-resources:
-  jobs:
-    smoke_test:
-      name: smoke-test
-      tasks:
-        - task_key: smoke_test_task
-          spark_python_task:
-            python_file: /Workspace/demo/smoketest/smoke_test.py
-          environment_key: Default
-      job_clusters:
-        - job_cluster_key: smoke_job_cluster
-          new_cluster:
-            cluster_name: ""
-            spark_version: 15.4.x-scala2.12
-            azure_attributes:
-              availability: ON_DEMAND_AZURE
-            node_type_id: Standard_DS3_v2
-            enable_elastic_disk: true
-            data_security_mode: SINGLE_USER
+# resources:
+#   jobs:
+#     smoke_test:
+#       name: smoke-test
+#       tasks:
+#         - task_key: smoke_test_task
+#           spark_python_task:
+#             python_file: /Workspace/demo/smoketest/smoke_test.py
+#           environment_key: Default
+#       job_clusters:
+#         - job_cluster_key: smoke_job_cluster
+#           new_cluster:
+#             cluster_name: ""
+#             spark_version: 15.4.x-scala2.12
+#             azure_attributes:
+#               availability: ON_DEMAND_AZURE
+#             node_type_id: Standard_DS3_v2
+#             enable_elastic_disk: true
+#             data_security_mode: SINGLE_USER
             num_workers: 2
       queue:
         enabled: true
