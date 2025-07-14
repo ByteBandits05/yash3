@@ -6,13 +6,13 @@ variables:
   ROOT_PATH_DEV: "/Workspace/demo2/"
   FILE_PATH_DEV: "/Workspace/demo2/"
   # QA environment variables (parameterized)
-  DATABRICKS_HOST_QA: "${DATABRICKS_HOST_QA}"
-  ROOT_PATH_QA: "${ROOT_PATH_QA}"
-  FILE_PATH_QA: "${FILE_PATH_QA}"
+  DATABRICKS_HOST_QA: "https://adb-3474497264589105.5.azuredatabricks.net/"
+  ROOT_PATH_QA: "/Workspace/demo2/"
+  FILE_PATH_QA: "/Workspace/demo2/"
   # Production environment variables (parameterized)
-  DATABRICKS_HOST_PROD: "${DATABRICKS_HOST_PROD}"
-  ROOT_PATH_PROD: "${ROOT_PATH_PROD}"
-  FILE_PATH_PROD: "${FILE_PATH_PROD}"
+  DATABRICKS_HOST_PROD: "https://adb-3474497264589105.5.azuredatabricks.net/"
+  ROOT_PATH_PROD: "/Workspace/demo2/"
+  FILE_PATH_PROD: "/Workspace/demo2/"
   # Smoke test Python file path
   SMOKE_TEST_PYTHON_FILE: "/Workspace/demo2/smoketest/smoke_test.py"
 
