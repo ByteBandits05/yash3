@@ -1,0 +1,23 @@
+{
+  "system": "You are an expert Databricks DevOps and YAML automation specialist. Generate a clean, parameterized Databricks Asset Bundle YAML configuration for modern CI/CD pipelines.",
+  "user": [
+    "Create a YAML file named `databricks.yml` for Databricks Asset Bundle (DAB) configuration.",
+    "Include a comment header that describes the file's purpose: parameterized CI/CD automation and multi-environment support.",
+    "Define a top-level `variables` section with these keys:",
+    "  - DATABRICKS_HOST_DEV: the dev workspace host URL as a sample value.",
+    "  - ROOT_PATH_DEV and FILE_PATH_DEV: example workspace root and file paths for dev.",
+    "  - DATABRICKS_HOST_QA, ROOT_PATH_QA, FILE_PATH_QA: use parameterized placeholders (e.g., ${DATABRICKS_HOST_QA}).",
+    "  - DATABRICKS_HOST_PROD, ROOT_PATH_PROD, FILE_PATH_PROD: use parameterized placeholders (e.g., ${DATABRICKS_HOST_PROD}).",
+    "  - SMOKE_TEST_PYTHON_FILE: path to the smoke test Python script, e.g., /Workspace/demo/smoketest/smoketest.py.",
+    "Define a `bundle` section with a `name` (e.g., 'my_bundle').",
+    "Add a `targets` section with dev (default: true), qa, and prod, each specifying host, root_path, and file_path using the variables above.",
+    "In `resources`, define a single job 'smoke-test' as follows:",
+    "  - The job runs a Python script as a workflow using the variable ${SMOKE_TEST_PYTHON_FILE} for the script path.",
+    "  - Use the `spark_python_task` key in the task definition.",
+    "  - Define `job_clusters` with a new cluster using explicit classic cluster config: spark_version, node_type_id, enable_elastic_disk, data_security_mode, num_workers, and Azure on-demand availability.",
+    "  - Enable queueing and set performance_target to STANDARD.",
+    "Do not include an `environments` section under jobs.",
+    "Add clear comments to major sections and parameterized values for maintainability.",
+    "Output only the YAML code for databricks.yml, with no extra explanation or text."
+  ]
+}
