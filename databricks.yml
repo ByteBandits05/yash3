@@ -1,20 +1,20 @@
 # Databricks Asset Bundle configuration for parameterized CI/CD automation and multi-environment support
 
-variables:
-  # Development environment variables
-  DATABRICKS_HOST_DEV: "https://adb-3474497264589105.5.azuredatabricks.net/"
-  ROOT_PATH_DEV: "/Workspace/demo2/"
-  FILE_PATH_DEV: "/Workspace/demo2/"
-  # QA environment variables (parameterized)
-  DATABRICKS_HOST_QA: "${DATABRICKS_HOST_QA}"
-  ROOT_PATH_QA: "${ROOT_PATH_QA}"
-  FILE_PATH_QA: "${FILE_PATH_QA}"
-  # Production environment variables (parameterized)
-  DATABRICKS_HOST_PROD: "${DATABRICKS_HOST_PROD}"
-  ROOT_PATH_PROD: "${ROOT_PATH_PROD}"
-  FILE_PATH_PROD: "${FILE_PATH_PROD}"
-  # Smoke test Python file path
-  SMOKE_TEST_PYTHON_FILE: "/Workspace/demo2/smoketest/smoke_test.py"
+# variables:
+#   # Development environment variables
+#   DATABRICKS_HOST_DEV: "https://adb-3474497264589105.5.azuredatabricks.net/"
+#   ROOT_PATH_DEV: "/Workspace/demo2/"
+#   FILE_PATH_DEV: "/Workspace/demo2/"
+#   # QA environment variables (parameterized)
+#   DATABRICKS_HOST_QA: "https://adb-3474497264589105.5.azuredatabricks.net/"
+#   ROOT_PATH_QA: "/Workspace/demo2/"
+#   FILE_PATH_QA: "/Workspace/demo2/"
+#   # Production environment variables (parameterized)
+#   DATABRICKS_HOST_PROD: "https://adb-3474497264589105.5.azuredatabricks.net/"
+#   ROOT_PATH_PROD: "/Workspace/demo2/"
+#   FILE_PATH_PROD: "/Workspace/demo2/"
+#   # Smoke test Python file path
+#   SMOKE_TEST_PYTHON_FILE: "/Workspace/demo2/smoketest/smoke_test.py"
 
 bundle:
   name: my_bundle  # Name of the Databricks Asset Bundle
@@ -23,17 +23,17 @@ bundle:
 targets:
   dev:
     default: true
-    host: ${DATABRICKS_HOST_DEV}         # Dev workspace host
-    root_path: ${ROOT_PATH_DEV}          # Dev root path
-    file_path: ${FILE_PATH_DEV}          # Dev file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/         # Dev workspace host
+    root_path: /Workspace/demo2/        # Dev root path
+    file_path: /Workspace/demo2/         # Dev file path
   qa:
-    host: ${DATABRICKS_HOST_QA}          # QA workspace host
-    root_path: ${ROOT_PATH_QA}           # QA root path
-    file_path: ${FILE_PATH_QA}           # QA file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/          # QA workspace host
+    root_path: /Workspace/demo2/             # QA root path
+    file_path: /Workspace/demo2/            # QA file path
   prod:
-    host: ${DATABRICKS_HOST_PROD}        # Prod workspace host
-    root_path: ${ROOT_PATH_PROD}         # Prod root path
-    file_path: ${FILE_PATH_PROD}         # Prod file path
+    host: https://adb-3474497264589105.5.azuredatabricks.net/       # Prod workspace host
+    root_path: /Workspace/demo2/           # Prod root path
+    file_path: /Workspace/demo2/           # Prod file path
 
 resources:
   jobs:
@@ -42,7 +42,7 @@ resources:
       tasks:
         - task_key: smoke-test-task
           spark_python_task:
-            python_file: ${SMOKE_TEST_PYTHON_FILE}  # Path to the smoke test script
+            python_file: /Workspace/demo2/smoketest/smoke_test.py  # Path to the smoke test script
           job_clusters:
             - job_cluster_key: smoke-test-cluster
               new_cluster:
