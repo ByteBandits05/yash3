@@ -2,9 +2,9 @@
 
 variables:
   # Development environment variables
-  DATABRICKS_HOST_DEV: "https://adb-1234567890.11.azuredatabricks.net"
-  ROOT_PATH_DEV: "/Workspace/Users/dev"
-  FILE_PATH_DEV: "/Workspace/Users/dev/myproject/"
+  DATABRICKS_HOST_DEV: "https://adb-3474497264589105.5.azuredatabricks.net/"
+  ROOT_PATH_DEV: "/Workspace/demo/"
+  FILE_PATH_DEV: "/Workspace/demo/"
   # QA environment variables (parameterized)
   DATABRICKS_HOST_QA: "${DATABRICKS_HOST_QA}"
   ROOT_PATH_QA: "${ROOT_PATH_QA}"
@@ -14,7 +14,7 @@ variables:
   ROOT_PATH_PROD: "${ROOT_PATH_PROD}"
   FILE_PATH_PROD: "${FILE_PATH_PROD}"
   # Smoke test Python file path
-  SMOKE_TEST_PYTHON_FILE: "/Workspace/demo/smoketest/smoketest.py"
+  SMOKE_TEST_PYTHON_FILE: "/Workspace/demo/smoketest/smoke_test.py"
 
 bundle:
   name: my_bundle  # Name of the Databricks Asset Bundle
