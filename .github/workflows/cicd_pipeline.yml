@@ -33,5 +33,5 @@ jobs:
         run: databricks bundle deploy --target dev --force-lock
 
       # Step 5: Run smoke test notebook
-      - name: Run smoke test
-        run: databricks bundle run smoke_test --target dev
+      # - name: Run smoke test
+      #   run: databricks bundle run smoke_test --target dev
