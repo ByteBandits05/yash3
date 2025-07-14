@@ -39,25 +39,23 @@ resources:
   jobs:
     smoke_test:
       name: smoke-test
-      # Job runs a Python smoke test script as a workflow
       tasks:
-        - task_key: smoke-test-task
+        - task_key: smoke_test_task
           spark_python_task:
-            python_file: /Workspace/demo2/smoketest/smoke_test.py  # Path to the smoke test script
-          job_clusters:
-            - job_cluster_key: smoke-test-cluster
-              new_cluster:
-                spark_version: "12.2.x-scala2.12"       # Explicit classic cluster config
-                node_type_id: "Standard_DS3_v2"
-                enable_elastic_disk: true
-                data_security_mode: "SINGLE_USER"
-                num_workers: 1
-                azure_attributes:
-                  availability: "ON_DEMAND_AZURE"
+            python_file: /Workspace/demo/smoketest/smoke_test.py
+          environment_key: Default
+      job_clusters:
+        - job_cluster_key: smoke_job_cluster
+          new_cluster:
+            cluster_name: ""
+            spark_version: 15.4.x-scala2.12
+            azure_attributes:
+              availability: ON_DEMAND_AZURE
+            node_type_id: Standard_DS3_v2
+            enable_elastic_disk: true
+            data_security_mode: SINGLE_USER
+            num_workers: 2
       queue:
         enabled: true
       environments:
         - environment_key: Default
-          spec:
-            client: "2"
-      performance_target: STANDARD
