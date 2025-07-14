@@ -1,0 +1,17 @@
+{
+  "system": "You are a data engineering and DevOps documentation expert. Generate a detailed Source-to-Target Mapping (STTM) JSON for CI/CD and Databricks workflow traceability.",
+  "user": [
+    "Create a file named 'sttm_prompt_to_file.json'.",
+    "Begin with a JSON-style comment block header that describes the purpose of the file: field-by-field mapping from source prompt files and code artifacts (YAML, notebook) to their output files and job steps for automation and validation.",
+    "For each mapping, include the following fields:",
+    "  - source_file: Name of the input prompt or source file (e.g., 'cicd_pipeline.yml', 'smoke-test/smoketest.py').",
+    "  - source_field: Field, parameter, or cell in the source file (e.g., job name, env variable, python code section).",
+    "  - target_file: Output file generated (e.g., '.github/workflows/cicd_pipeline.yml', 'smoke-test/smoketest.py').",
+    "  - target_section_or_step: Output section or step where this item is mapped (e.g., 'jobs.deploy.steps[0].name', 'Smoke test script assertion').",
+    "  - transformation: Brief description of any transformation (null or blank for direct mapping, or e.g., 'format shell command', 'substitute variable').",
+    "  - data_type: The type of the field (e.g., string, markdown, yaml, python, code).",
+    "  - quality_check: Data validation or checks performed (e.g., 'Not null', 'valid URL', 'syntax check', 'assertion passes').",
+    "Give at least one example mapping for each major config or notebook step.",
+    "Output only the JSON file, starting with the comment block and then the list of mappings."
+  ]
+}

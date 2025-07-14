@@ -1,0 +1,58 @@
+# Databricks Asset Bundle configuration for parameterized CI/CD automation and multi-environment support
+
+variables:
+  # Development environment variables
+  DATABRICKS_HOST_DEV: "https://adb-3474497264589105.5.azuredatabricks.net/"
+  ROOT_PATH_DEV: "/Workspace/demo2/"
+  FILE_PATH_DEV: "/Workspace/demo2/"
+  # QA environment variables (parameterized)
+  DATABRICKS_HOST_QA: "${DATABRICKS_HOST_QA}"
+  ROOT_PATH_QA: "${ROOT_PATH_QA}"
+  FILE_PATH_QA: "${FILE_PATH_QA}"
+  # Production environment variables (parameterized)
+  DATABRICKS_HOST_PROD: "${DATABRICKS_HOST_PROD}"
+  ROOT_PATH_PROD: "${ROOT_PATH_PROD}"
+  FILE_PATH_PROD: "${FILE_PATH_PROD}"
+  # Smoke test Python file path
+  SMOKE_TEST_PYTHON_FILE: "/Workspace/demo2/smoketest/smoke_test.py"
+
+bundle:
+  name: my_bundle  # Name of the Databricks Asset Bundle
+
+# Define deployment targets for dev, qa, and prod
+targets:
+  dev:
+    default: true
+    host: ${DATABRICKS_HOST_DEV}         # Dev workspace host
+    root_path: ${ROOT_PATH_DEV}          # Dev root path
+    file_path: ${FILE_PATH_DEV}          # Dev file path
+  qa:
+    host: ${DATABRICKS_HOST_QA}          # QA workspace host
+    root_path: ${ROOT_PATH_QA}           # QA root path
+    file_path: ${FILE_PATH_QA}           # QA file path
+  prod:
+    host: ${DATABRICKS_HOST_PROD}        # Prod workspace host
+    root_path: ${ROOT_PATH_PROD}         # Prod root path
+    file_path: ${FILE_PATH_PROD}         # Prod file path
+
+resources:
+  jobs:
+    smoke-test:
+      # Job runs a Python smoke test script as a workflow
+      tasks:
+        - task_key: smoke-test-task
+          spark_python_task:
+            python_file: ${SMOKE_TEST_PYTHON_FILE}  # Path to the smoke test script
+          job_clusters:
+            - job_cluster_key: smoke-test-cluster
+              new_cluster:
+                spark_version: "12.2.x-scala2.12"       # Explicit classic cluster config
+                node_type_id: "Standard_DS3_v2"
+                enable_elastic_disk: true
+                data_security_mode: "SINGLE_USER"
+                num_workers: 1
+                azure_attributes:
+                  availability: "ON_DEMAND_AZURE"
+          queue:
+            enabled: true
+          performance_target: STANDARD

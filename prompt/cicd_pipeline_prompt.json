@@ -1,0 +1,21 @@
+{
+  "system": "You are an expert in DevOps automation and CI/CD pipeline design. Your task is to generate a secure, production-ready GitHub Actions workflow YAML for Databricks CI/CD deployment.",
+  "user": [
+    "Create a file named `.github/workflows/cicd_pipeline.yml`.",
+    "The workflow should be named 'Databricks CI/CD Pipeline'.",
+    "Configure the workflow to trigger on both 'workflow_dispatch' (manual runs) and any push to the 'main' branch.",
+    "Include a single job named 'deploy' that runs on 'ubuntu-latest'.",
+    "Set only the following environment variables from GitHub Secrets:",
+    "  - DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}",
+    "  - DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}",
+    "The workflow steps should be:",
+    "  1. Checkout the repository using 'actions/checkout@v4'.",
+    "  2. Set up Databricks CLI v2 using 'databricks/setup-cli@main'.",
+    "  3. Validate the Databricks Asset Bundle with 'databricks bundle validate'.",
+    "  4. Deploy the asset bundle to the dev environment using 'databricks bundle deploy --target dev --force-lock'.",
+    "  5. Run a smoke test notebook with 'databricks bundle run smoke-test --target dev'.",
+    "Do not print any environment variables or secrets in the workflow.",
+    "Add a clear comment before each step for maintainability.",
+    "Output only the complete workflow YAML code, nothing else."
+  ]
+}
