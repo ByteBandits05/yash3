@@ -35,24 +35,24 @@ targets:
     root_path: /Workspace/demo2/           # Prod root path
     file_path: /Workspace/demo2/           # Prod file path
 
-resources:
-  jobs:
-    smoke-test:
-      # Job runs a Python smoke test script as a workflow
-      tasks:
-        - task_key: smoke-test-task
-          spark_python_task:
-            python_file: /Workspace/demo2/smoketest/smoke_test.py  # Path to the smoke test script
-          job_clusters:
-            - job_cluster_key: smoke-test-cluster
-              new_cluster:
-                spark_version: "12.2.x-scala2.12"       # Explicit classic cluster config
-                node_type_id: "Standard_DS3_v2"
-                enable_elastic_disk: true
-                data_security_mode: "SINGLE_USER"
-                num_workers: 1
-                azure_attributes:
-                  availability: "ON_DEMAND_AZURE"
-          queue:
-            enabled: true
-          performance_target: STANDARD
+# resources:
+#   jobs:
+#     smoke-test:
+#       # Job runs a Python smoke test script as a workflow
+#       tasks:
+#         - task_key: smoke-test-task
+#           spark_python_task:
+#             python_file: /Workspace/demo2/smoketest/smoke_test.py  # Path to the smoke test script
+#           job_clusters:
+#             - job_cluster_key: smoke-test-cluster
+#               new_cluster:
+#                 spark_version: "12.2.x-scala2.12"       # Explicit classic cluster config
+#                 node_type_id: "Standard_DS3_v2"
+#                 enable_elastic_disk: true
+#                 data_security_mode: "SINGLE_USER"
+#                 num_workers: 1
+#                 azure_attributes:
+#                   availability: "ON_DEMAND_AZURE"
+#           queue:
+#             enabled: true
+#           performance_target: STANDARD
